@@ -6,7 +6,7 @@ on:
     - '*'
 
 permissions:
-  contents: write  #  for release creation (svenstaro/upload-release-action)
+  contents: write
 
 jobs:
   linux:
@@ -16,10 +16,10 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v6
 
-      - name: Install .NET 6.0
+      - name: Install .NET 8.0
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Prepare Environment
         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> ${GITHUB_ENV}
@@ -28,6 +28,7 @@ jobs:
         run: |
           make engine
           mkdir -p build/linux
+          sudo apt-get update
           sudo apt-get install -y desktop-file-utils
           ./packaging/linux/buildpackage.sh "${GIT_TAG}" "${PWD}/build/linux"
 
@@ -45,10 +46,10 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v6
 
-      - name: Install .NET 6.0
+      - name: Install .NET 8.0
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Prepare Environment
         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> ${GITHUB_ENV}
@@ -79,16 +80,16 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v6
 
-      - name: Install .NET 6.0
+      - name: Install .NET 8.0
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Prepare Environment
         run: |
           echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> ${GITHUB_ENV}
           sudo apt-get update
-          sudo apt-get install nsis wine64
+          sudo apt-get install -y nsis wine64
 
       - name: Package Installers
         run: |
