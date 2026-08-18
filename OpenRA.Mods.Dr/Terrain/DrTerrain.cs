@@ -99,9 +99,6 @@ namespace OpenRA.Mods.Dr.Terrain
 			defaultWalkableTerrainIndex = GetTerrainIndex("Clear");
 
 			// Templates
-			var allTemplates = yaml["Templates"].ToDictionary().Values;
-
-			// Templates
 			var templates = yaml["Templates"].Nodes
 				.Select(n => (TerrainTemplateInfo)new DefaultTerrainTemplateInfo(this, n.Value))
 				.ToImmutableArray();
@@ -113,9 +110,18 @@ namespace OpenRA.Mods.Dr.Terrain
 			Templates = templates
 				.ToFrozenDictionary(t => t.Id);
 
-			EdgeTemplates = TemplatesInDefinitionOrder
+			EdgeTemplates = templates
 				.Skip(NumTemplatesVisibleInEditor)
 				.ToFrozenDictionary(t => t.Id);
+
+			MultiBrushCollections =
+				yaml.TryGetValue("MultiBrushCollections", out var collectionDefinitions)
+					? collectionDefinitions.ToDictionary()
+						.Select(kv => new KeyValuePair<string, ImmutableArray<MultiBrushInfo>>(
+							kv.Key,
+							MultiBrushInfo.ParseCollection(kv.Value)))
+						.ToFrozenDictionary()
+					: FrozenDictionary<string, ImmutableArray<MultiBrushInfo>>.Empty;
 		}
 
 		public TerrainTypeInfo this[byte index] => TerrainInfo[index];
