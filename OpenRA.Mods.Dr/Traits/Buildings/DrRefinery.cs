@@ -21,6 +21,9 @@ namespace OpenRA.Mods.Common.Traits
 {
 	public class DrRefineryInfo : TraitInfo, Requires<WithSpriteBodyInfo>, Requires<IDockHostInfo>
 	{
+		[Desc("Resource accepted by this refinery.")]
+		public readonly string ResourceType = "Water";
+
 		[Desc("Store resources in silos. Adds cash directly without storing if set to false.")]
 		public readonly bool UseStorage = true;
 
@@ -57,6 +60,9 @@ namespace OpenRA.Mods.Common.Traits
 
 		int IAcceptResources.AcceptResources(Actor self, string resourceType, int count)
 		{
+			if (resourceType != info.ResourceType)
+				return 0;
+
 			if (!playerResources.Info.ResourceValues.TryGetValue(resourceType, out var resourceValue))
 				return 0;
 
