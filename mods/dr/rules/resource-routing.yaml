@@ -1,0 +1,55 @@
+# Dark Reign uses two distinct resource delivery chains:
+# Water -> Water Launch Pad -> credits
+# Taelon -> Power Generator -> increased power output
+
+World:
+	DrResourceLayer:
+		# Both resource types are inexhaustible in the original game. Harvesting can
+		# drain a deposit faster than it refills, reducing collection throughput.
+		# The exact original refill interval still needs measurement against the game.
+		RegenerationInterval: 25
+		RegenerationAmount: 1
+
+Power:
+	DockHost:
+		Type: TaelonUnload
+		DockAngle: 32
+		DockOffset: 0c0,2c0,0
+	DrTaelonPowerStorage:
+		ResourceType: Taelon
+		Capacity: 3000
+		EmptyPowerModifier: 100
+		# The exact original full-generator multiplier still needs measurement.
+		FullPowerModifier: 400
+
+WaterLaunchPad:
+	DockHost:
+		Type: WaterUnload
+
+Freighter:
+	-Harvester:
+	DrHarvester:
+		Type: WaterUnload, TaelonUnload
+		Resources: Water, Taelon
+		WaterResource: Water
+		TaelonResource: Taelon
+		WaterDockType: WaterUnload
+		TaelonDockType: TaelonUnload
+		BaleLoadDelay: 20
+		BaleUnloadDelay: 20
+		SearchFromProcRadius: 30
+		SearchFromHarvesterRadius: 11
+
+HoverFreighter:
+	-Harvester:
+	DrHarvester:
+		Type: WaterUnload, TaelonUnload
+		Resources: Water, Taelon
+		WaterResource: Water
+		TaelonResource: Taelon
+		WaterDockType: WaterUnload
+		TaelonDockType: TaelonUnload
+		BaleLoadDelay: 20
+		BaleUnloadDelay: 18
+		SearchFromProcRadius: 30
+		SearchFromHarvesterRadius: 11

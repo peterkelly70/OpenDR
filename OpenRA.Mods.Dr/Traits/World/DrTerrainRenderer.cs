@@ -710,7 +710,7 @@ namespace OpenRA.Mods.Dr.Traits
 			}
 		}
 
-		public IEnumerable<IRenderable> RenderPreview(WorldRenderer wr, TerrainTile tile, WPos origin)
+		IEnumerable<IRenderable> ITiledTerrainRenderer.RenderPreview(WorldRenderer wr, TerrainTile tile, WPos origin)
 		{
 			if (!terrainInfo.Templates.TryGetValue(tile.Type, out var template) || !template.Contains(tile.Index))
 				yield break;
