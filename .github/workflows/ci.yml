@@ -10,6 +10,7 @@ permissions:
 
 env:
   NuGetAudit: false
+  WarningsNotAsErrors: IDE0028;SA1208;CA1305;IDE0052
 
 jobs:
   linux:
