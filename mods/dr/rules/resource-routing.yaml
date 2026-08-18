@@ -2,6 +2,14 @@
 # Water -> Water Launch Pad -> credits
 # Taelon -> Power Generator -> increased power output
 
+World:
+	DrResourceLayer:
+		# Both resource types are inexhaustible in the original game. Harvesting can
+		# drain a deposit faster than it refills, reducing collection throughput.
+		# The exact original refill interval still needs measurement against the game.
+		RegenerationInterval: 25
+		RegenerationAmount: 1
+
 Power:
 	DockHost:
 		Type: TaelonUnload
