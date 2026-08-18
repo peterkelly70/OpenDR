@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
 
+env:
+  NuGetAudit: false
+
 jobs:
   linux:
     name: Linux (.NET 8.0)
