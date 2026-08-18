@@ -1,0 +1,48 @@
+# Dark Reign uses two distinct resource delivery chains:
+# Water -> Water Launch Pad -> credits
+# Taelon -> Power Generator -> increased power output
+
+Power:
+	DockHost:
+		Type: TaelonUnload
+		DockAngle: 32
+		DockOffset: 0c0,2c0,0
+	DrTaelonPowerStorage:
+		ResourceType: Taelon
+		Capacity: 3000
+		EmptyPowerModifier: 100
+		# The original game is reported to reach roughly 3-4x output when full.
+		# Keep this explicit so it is easy to tune from original-game measurements.
+		FullPowerModifier: 400
+
+WaterLaunchPad:
+	DockHost:
+		Type: WaterUnload
+
+Freighter:
+	-Harvester:
+	DrHarvester:
+		Type: WaterUnload, TaelonUnload
+		Resources: Water, Taelon
+		WaterResource: Water
+		TaelonResource: Taelon
+		WaterDockType: WaterUnload
+		TaelonDockType: TaelonUnload
+		BaleLoadDelay: 20
+		BaleUnloadDelay: 20
+		SearchFromProcRadius: 30
+		SearchFromHarvesterRadius: 11
+
+HoverFreighter:
+	-Harvester:
+	DrHarvester:
+		Type: WaterUnload, TaelonUnload
+		Resources: Water, Taelon
+		WaterResource: Water
+		TaelonResource: Taelon
+		WaterDockType: WaterUnload
+		TaelonDockType: TaelonUnload
+		BaleLoadDelay: 20
+		BaleUnloadDelay: 18
+		SearchFromProcRadius: 30
+		SearchFromHarvesterRadius: 11
