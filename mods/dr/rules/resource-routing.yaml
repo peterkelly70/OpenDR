@@ -19,8 +19,7 @@ Power:
 		ResourceType: Taelon
 		Capacity: 3000
 		EmptyPowerModifier: 100
-		# The original game is reported to reach roughly 3-4x output when full.
-		# Keep this explicit so it is easy to tune from original-game measurements.
+		# The exact original full-generator multiplier still needs measurement.
 		FullPowerModifier: 400
 
 WaterLaunchPad:
