@@ -86,6 +86,7 @@ Rules:
 	dr|rules/decorations-jungle.yaml
 	dr|rules/togran.yaml
 	dr|rules/terrorist.yaml
+	dr|rules/resource-routing.yaml
 
 Sequences:
 	dr|sequences/misc.yaml
@@ -140,7 +141,6 @@ ChromeLayout:
 	common|chrome/ingame-debug.yaml
 	common|chrome/ingame-debug-hpf.yaml
 	common|chrome/ingame-debuginfo.yaml
-	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
 	common|chrome/mainmenu-prompts.yaml
 	common|chrome/settings.yaml
