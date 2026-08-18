@@ -148,7 +148,6 @@ World:
 	LoadWidgetAtGameStart:
 	#	ShellmapRoot: MAINMENU_PRERELEASE_NOTIFICATION
 	DrResourceLayer:
-		ResourceValueMultiplier: 1000
 		ResourceTypes:
 			Water:
 				ResourceIndex: 1
@@ -178,19 +177,3 @@ EditorWorld:
 	EditorCursorLayer:
 	EditorResourceLayer:
 		RecalculateResourceDensity: true
-		ResourceTypes:
-			Water:
-				ResourceIndex: 1
-				TerrainType: Clear
-				AllowedTerrainTypes: Clear, Normal2, Normal3, Muddy1, Muddy2, Rough1, Rough2, Road, RoadBase
-				MaxDensity: 255 # 9000000
-			Taelon:
-				ResourceIndex: 2
-				TerrainType: Clear
-				AllowedTerrainTypes: Clear, Normal2, Normal3, Muddy1, Muddy2, Rough1, Rough2, Road, RoadBase
-				MaxDensity: 255 # 9000000
-	LoadWidgetAtGameStart:
-	EditorActionManager:
-	BuildableTerrainOverlay:
-		AllowedTerrainTypes: Clear, Normal2, Normal3, Muddy1, Muddy2, Rough1, Rough2, Road, RoadBase
-	MarkerLayerOverlay:
